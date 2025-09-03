@@ -47,3 +47,36 @@
                 <button id="reset" class="btn" disabled>Reset</button>
             </div>
         </header>
+
+        <main class="card">
+            <div id="progress" class="progress">Ready when you are.</div>
+            <div id="question" class="question"></div>
+            <form id="answers" class="answers" aria-label="answer choices"></form>
+            <div class="nav">
+                <button id="prev" class="btn" disabled>Prev</button>
+                <button id="next" class="btn" disabled>Next</button>
+                <button id="submit" class="btn primary" disabled>Submit</button>
+            </div>
+            <div id="feedback" class="feedback" aria-live="polite"></div>
+        </main>
+
+    <section id="resultsCard" class="card hidden" aria-live="polite">
+        <div class="logo">🏆</div>
+        <h2>Your Results</h2>
+        <p id="scoreLine"></p>
+        <div id="reviewList" class="review"></div>
+        <div class"nav">
+            <button id="retake" class="btn primary">Try again</button>
+            <button id="backIntro" class="btn">Back to Intro</button>
+        </div>
+        </section>
+
+        <footer class="footer">
+            <small>Tip: edit <code>script.js</code> to customise the country list.</small>
+            </footer>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
