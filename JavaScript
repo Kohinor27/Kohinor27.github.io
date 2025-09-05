@@ -1,0 +1,35 @@
+// ===== Intro Page =====
+const intro = document.getElementById('intro');
+const quizPage = document.getElementById("quizPage");
+document.getElementById("begin").addEventListener("click", () => {
+    intro.classList.add("hidden");
+    quizPage.classList.remove("hidden");
+});
+
+// ===== Quiz Settings =====
+const SHUFFLE_QUESTIONS = true;
+const CHOICES_PER_QUESTION = 4;
+
+// ===== Data =====
+const COUNTRIES = [
+    { country: "United Kingdom", capital: "London" },
+    { country: "France", capital: "Paris" },
+    { country: "Germany", capital: "Berlin" },
+    { country: "Italy", capital: "Rome" },
+    { country: "Spain", capital: "Madrid" },
+    { country: "Portugal", capital: "Lisbon" },
+    { country: "Netherlands", capital: "Amsterdam" },
+    { country: "United States", capital: "Wasington DC" },
+    { country: "Canada", capital: "Ottawa" },
+    { country: "Mexico", capital: "Mexico City" },
+    { country: "Brazil", capital: "Brasília" },
+    { country: "Argentina", capital: "Buenos Aires" },
+    { country: "China", capital: "Beijing" },
+    { country: "Japan", capital: "Tokyo" },
+    { country: "India", capital: "New Delhi" },
+    { country: "Russia", capital: "Moscow" },
+    { country: "Australia", capital: "Canberra" },
+];
+
+// ===== Helpers =====
+const $ = (sel) => document.querySelector(sel);
