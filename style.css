@@ -1,104 +1,228 @@
 /* ======Theme (3 colors only) ====== */
-*{box-sizimng:border-box}
-:root{
-    --primary:#3f67ff;
-    --secondary:#f6f7fb;
-    --neutral:#333333;
+* {
+    box-sizing: border-box
+}
+
+:root {
+    --primary: #ff3f3f;
+    --secondary: #05165d;
+    --neutral: #333333;
     --radius: 12px;
-    --gap:14px;
+    --gap: 14px;
 }
 
 /* ====== Base ====== */
-html, body{ height:100% }
-body{
-    margin:0;
-    font-family: system-ui, sans-serif;
-    background:var(--secondary);
-    color:var(--neutral);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:16px;
-    min-height:100vh;
+html,
+body {
+    height: 100%
 }
 
-.app{width:100%; max-width:900px}
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: var(--secondary);
+    color: var(--neutral);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    min-height: 100vh;
+}
+
+.app {
+    width: 100%;
+    max-width: 900px
+}
 
 /* Card layout (use seconday so we keep 3 colors only) */
-.card{
-    background:var(--secondary);
-    border:1px solid var(--neutral);
-    border-radius:var(--radius);
-    padding:16px;
+.card {
+    background: var(--secondary);
+    border: 1px solid var(--neutral);
+    border-radius: var(--radius);
+    padding: 16px;
 }
-.hidden{display:none}
+
+.hidden {
+    display: none
+}
 
 /* ====== Header & top controls ====== */
-.header{display:flex; justify-content:space-between; align-items:center; margin-bottom:var(--gap)}
-.controls-top{display:flex; flex-wrap:wrap;wrap; gap 10px; align-items:center}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--gap)
+}
+
+.controls-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center
+}
 
 /* ====== questions & Answers ====== */
-.questions{font-weighgt:700; font-size:1.15rem; margin-bottom:var(--gap0)}
-.answers{display:grid; gap:10px; margin-bottom:var(--gap)}
-.answer{
-    display:flex; gap:10px; align-items:flex-start;
-    padding:12px;
-    border:1px solid var(--neutral);
-    border-radius:10px;
-    cursor:pointer;
-    min-height:44px; /* mobile tap size */
+.questions {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: var(--gap0)
 }
-.answer input{margin-top:3px; transform:scale(1.25) /* larger radios */ }
+
+.answers {
+    display: grid;
+    gap: 10px;
+    margin-bottom: var(--gap)
+}
+
+.answer {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px;
+    border: 1px solid var(--neutral);
+    border-radius: 10px;
+    cursor: pointer;
+    min-height: 44px;
+    /* mobile tap size */
+}
+
+.answer input {
+    margin-top: 3px;
+    transform: scale(1.25)
+        /* larger radios */
+}
 
 
 /*====== Buttons & navigation ====== */
-.nav{display:flex; gap:10px; justify-content:flex-end; margin-top:var(--gap)}
-.btn{
-    border:1px solid var(--neutral);
-    background:var(--secondary);
-    color:var(--neutral);
-    padding:12px 14px;
-    border-radius:10px;
-    cursor:pointer;
-    min-height:44px; min-width:44px;
+.nav {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: var(--gap)
 }
-.btn primary{background:var(--primary); color:var(--seconday); /* stay within theme (no white) */ border-color:var(--seconday)}
-.btn:disabled{opacity:.6; cursor:not-allowed}
+
+.btn {
+    border: 1px solid var(--neutral);
+    background: var(--secondary);
+    color: var(--neutral);
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--secondary);
+    border-color: var(--secondary)
+}
+
+.btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
 
 /* Meta text */
-.progress{margin-bottom:var(--gap)}
-.feedback{min-height;22px; marigin-top:var(--gap); font-weight:600}
-.footer{margin-top:var(--gap);  text-align:center;}
-
-/* ====== Results / Review ====== */
-.review{display:grid; gap:12px; margin-top:10px}
-.reviewn.row{padding:10px; background:var(--secondary); border:1px solid var(--neutral); border-radius:var(--radius:10px)}
-/* one-color differentiation using border style only */
-.review .correct{border-style:solid}
-.review .incorrect{border-style:dashed}
-
-/* ====== Intro page (logo + rules, centered on phones/desktops) ======*/
-#intro{
-    display:flex; flex-direction:column; justify-content:center; 
-    min-height:80vh;
-    text-align:center;
-}
-#intro .rules{ text-align:left; display:inline-block; margin:0 auto 1.5em auto; padding-left:1.2em }
-.rules li{ margin-bottom: .5em }
-.logo{ font-size:3rem; margin-bottom:.5em }
-
-/*======= Responsive ======*/
-@media (max-width:600px) {
-    .header{flex-direction:column; align-items:stretch}
-    .controls-top{width:100%}
-    .controls-top select, .controls-top .btn{width:100%}
-    .nav{flex-direction:column; align-items:stretch}
-    .nav .btn{width:100%}
-    body{font-size:17px}
+.progress {
+    margin-bottom: var(--gap)
 }
 
-@media (min-width:601px) {
-    .card{ padding:clamp(16px, 3ve, 24px) }
-    .question{ font-size:1.25rem }
-    
-}
+.feedback {
+    min-height: 22px;
+    margin-top: var(--gap);
+    font-weight: 600;
+
+    .footer {
+        margin-top: var(--gap);
+        text-align: center;
+    }
+
+    /* ====== Results / Review ====== */
+    .review {
+        display: grid;
+        gap: 12px;
+        margin-top: 10px
+    }
+
+    .reviewn.row {
+        padding: 10px;
+        background: var(--secondary);
+        border: 1px solid var(--neutral);
+        border-radius: var(--radius:10px)
+    }
+
+    /* one-color differentiation using border style only */
+    .review .correct {
+        border-style: solid
+    }
+
+    .review .incorrect {
+        border-style: dashed
+    }
+
+    /* ====== Intro page (logo + rules, centered on phones/desktops) ======*/
+    #intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 80vh;
+        text-align: center;
+    }
+
+    #intro .rules {
+        text-align: left;
+        display: inline-block;
+        margin: 0 auto 1.5em auto;
+        padding-left: 1.2em
+    }
+
+    .rules li {
+        margin-bottom: .5em
+    }
+
+    .logo {
+        font-size: 3rem;
+        margin-bottom: .5em
+    }
+
+    /*======= Responsive ======*/
+    @media (max-width:600px) {
+        .header {
+            flex-direction: column;
+            align-items: stretch
+        }
+
+        .controls-top {
+            width: 100%
+        }
+
+        .controls-top select,
+        .controls-top .btn {
+            width: 100%
+        }
+
+        .nav {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .nav .btn {
+            width: 100%
+        }
+
+        body {
+            font-size: 17px
+        }
+    }
+
+    @media (min-width:601px) {
+        .card {
+            padding: clamp(16px, 3ve, 24px)
+        }
+
+        .question {
+            font-size: 1.25rem;
+        }
+
+    }
