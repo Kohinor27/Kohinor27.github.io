@@ -1,7 +1,7 @@
 // ===== Intro Page =====
 const intro = document.getElementById('intro');
 const quizPage = document.getElementById("quizPage");
-document.getElementById("begin").addEventListener("click", () => {
+document.getElementById("startQuiz").addEventListener("click", () => {
     intro.classList.add("hidden");
     quizPage.classList.remove("hidden");
 });
