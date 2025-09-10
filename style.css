@@ -4,9 +4,9 @@
 }
 
 :root {
-    --primary: #ff3f3f;
-    --secondary: #05165d;
-    --neutral: #333333;
+    --primary: #ff6b6b6b;
+    --secondary: #1e2a78;
+    --neutral: #ffffff;
     --radius: 12px;
     --gap: 14px;
 }
