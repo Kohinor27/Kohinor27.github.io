@@ -116,9 +116,9 @@ function updateUI(){
     progressE1.textContent=`Question ${index+1} of ${questions.length}`;
     questionE1.textContent=q.prompt; answersForm.innerHTML="";
     q.choices.forEach((choice,i) => {
-        const id=`q${index}_choice${i}`; label=document.createElement("label");
+        const id=`q${index}_choice${i}`, label=document.createElement("label");
         label.className="answers"; label.setAttribute("for",id);
-        const inpudocument.createElement("input");
+        const input = document.createElement("input");
         input.type="radio"; input.name="answer"; input.id=id; input.value=i;
         input.checked=answers[index]===i; input.addEventListener("change", () => {answers[index]=i; });
         const span=document.createElement("span"); span.textContent=choice;
