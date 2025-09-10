@@ -1,9 +1,17 @@
 // ===== Intro Page =====
+document.addEventListener('DOMContentLoaded', () => {}
 const intro = document.getElementById('intro');
-const quizPage = document.getElementById("quizPage");
-document.getElementById("startQuiz").addEventListener("click", () => {
-    intro.classList.add("hidden");
-    quizPage.classList.remove("hidden");
+const quizPage = document.getElementById('quizPage');
+const startBtn = document.getElementBtId('startQuiz');
+
+if (startBtn && intro && quizPage) {
+    startBtn.addEventListener('click', () => {
+        intro.classList.add('hidden');
+        quizPage.classList.remove('hidden');
+    });
+} else {
+    console.warn("Could not find startQuiz, intro, or quizPage in the DOM");
+}
 });
 
 // ===== Quiz Settings =====
