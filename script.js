@@ -60,7 +60,7 @@ let questions=[], index=0, answrs=[];
 
 // =====UI Wiring =====
 const startBtn = $("#startQuiz"), resetBtn=$("#reset"), lengthSel=$("#length");
-const progressEI=$("#progress"), questionE1=$("#question"), answersForm=$("#answers");
+const progressEI=$("#progress"), questionEI=$("#question"), answersForm=$("#answers");
 const prevBtn=$("#prev"), nextBtn=$("#next"), submitBtn=$("#submit");
 const resultsPage=$("#resultsPage"), scoreEI=$("#score"), reviewEI=$("#review");
 const retryBtn=$("#retry"), backIntroBtn=document.getElementById("#backIntro");
@@ -73,8 +73,8 @@ startBtn.addEventListener("click", () => {
 });
 resetBtn.addEventListener("click", () => {
     startBtn.disabled=false; resetBtn.disabled=true; submitBtn.disabled=true;
-    questionsE1.textContent=""; answersForm.innerHTML=""; 
-    progressE1.textContent="Ready when you are."; resultsPage.classList.add("hidden");
+    questionsEI.textContent=""; answersForm.innerHTML=""; 
+    progressEI.textContent="Ready when you are."; resultsPage.classList.add("hidden");
 });
 
 prevBtn.addEventListener("click", () => { if(index>0){index--; updateUI(); } });
