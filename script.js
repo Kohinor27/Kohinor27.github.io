@@ -59,62 +59,62 @@ function buildQuestionPool(length){
 let questions=[], index=0, answrs=[];
 
 // =====UI Wiring =====
-const startBtn = $("#start"), resetBtn=$("#reset"), lengthSel=$("#Length");
-const progressE1=$("#progress"), questionE1=$("#question"), answersForm=$("#answers");
-constPrevBtn=$("#prev"), nextBtn=$("#next"), submitBtn=$("#submit");
-const resultPage=$("#resultPage"), scoreE1=$("#score"), reviewE1=$("#review");
-const retryBtn=$("#retry"), backIntroBtn=document.getElementById("backIntro");
+const startBtn = $("#startQuiz"), resetBtn=$("#reset"), lengthSel=$("#length");
+const progressEI=$("#progress"), questionE1=$("#question"), answersForm=$("#answers");
+const prevBtn=$("#prev"), nextBtn=$("#next"), submitBtn=$("#submit");
+const resultsPage=$("#resultsPage"), scoreEI=$("#score"), reviewEI=$("#review");
+const retryBtn=$("#retry"), backIntroBtn=document.getElementById("#backIntro");
 
 startBtn.addEventListener("click", () => {
     const len=lengthSel.value; questions=buildQuestionPool(len);
     index=0; answers=Array(questions.length).fill(null);
     startBtn.disabled=true; resetBtn.disabled=false; submitBtn.disabled=false;
-    resultsCard.classList.add("hidden"); updateUI();
+    resultsPage.classList.add("hidden"); updateUI();
 });
 resetBtn.addEventListener("click", () => {
     startBtn.disabled=false; resetBtn.disabled=true; submitBtn.disabled=true;
     questionsE1.textContent=""; answersForm.innerHTML=""; 
-    progressE1.textContent="Ready when you are."; resultsCard.classList.add("hidden");
+    progressE1.textContent="Ready when you are."; resultsPage.classList.add("hidden");
 });
 
-PrevBtn.addEventListener("click", () => { if(index>0){index--; updateUI(); } });
+prevBtn.addEventListener("click", () => { if(index>0){index--; updateUI(); } });
 nextBtn.addEventListener("click", () => { if(index<questions.length-1){index++; updateUI(); } });
 
 submitBtn.addEventListener("click", () => {
     let correct=0; answers.forEach((a,i) => { if(a===questions[i].correctIndex) correct++; });
     const pct=Math.round((correct/questions.length)*100);
-    scoreLine.textContent=`You scored ${correct} out of ${questions.length} (${pct}%)`;
-    reviewList.innerHTML="";
+    scoreEI.textContent=`You scored ${correct} out of ${questions.length} (${pct}%)`;
+    reviewEI.innerHTML="";
     questions.forEach((q,i) => {
         const row=document.createElement("div");
         row.className="row "+(answers[i]===q.correctIndex?"correct":"incorrect");
         const userAnswer=answers[i]!==null ? q.choices[answers[i]] : "No answer";
         row.innerHTML=`<strong>Q${i+1}:</strong> ${q.prompt}<br/>
         <em>Your answer:</em> ${userAnswer}<br/><em>Correct answer:</em> ${q.answer}`;
-        reviewList.appendChild(row);
+        reviewEI.appendChild(row);
     });
 
-    resultsCard.classList.remove("hidden");
+    resultsPage.classList.remove("hidden");
     window.scrollTo({top:document.body.scrollHeight, behavior:"smooth"});
 });
 
 retryBtn.addEventListener("click", () => {
     startBtn.disabled=false; resetBtn.disabled=true; submitBtn.disabled=true;
-    resultsCard.classList.add("hidden"); questionE1.textContent="Ready when you are.";
+    resultsPage.classList.add("hidden"); questionEI.textContent="Ready when you are.";
 });
 
 backIntroBtn.addEventListener("click", () => {
-    resultsCard.classList.add("hidden"); quizPage.classList.add("hidden");
+    resultsPage.classList.add("hidden"); quizPage.classList.add("hidden");
     intro.classList.remove("hidden");
     startBtn.disabled=false; resetBtn.disabled=true; submitBtn.disabled=true;
-    questionE1.textContent=""; answersForm.innerHTML=""; 
-    progressE1.textContent="Ready when you are.";
+    questionEI.textContent=""; answersForm.innerHTML=""; 
+    progressEI.textContent="Ready when you are.";
 });
 
 function updateUI(){
     const q=questions[index];
-    progressE1.textContent=`Question ${index+1} of ${questions.length}`;
-    questionE1.textContent=q.prompt; answersForm.innerHTML="";
+    progressEI.textContent=`Question ${index+1} of ${questions.length}`;
+    questionEI.textContent=q.prompt; answersForm.innerHTML="";
     q.choices.forEach((choice,i) => {
         const id=`q${index}_choice${i}`, label=document.createElement("label");
         label.className="answers"; label.setAttribute("for",id);
