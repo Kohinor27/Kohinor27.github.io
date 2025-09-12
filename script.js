@@ -75,7 +75,8 @@ const startBtn = $("#startQuiz"), resetBtn=$("#reset"), lengthSel=$("#length");
 const progressEI=$("#progress"), questionEI=$("#question"), answersForm=$("#answers");
 const prevBtn=$("#prev"), nextBtn=$("#next"), submitBtn=$("#submit");
 const resultsPage=$("#resultsPage"), scoreEI=$("#score"), reviewEI=$("#review");
-const retryBtn=$("#retry"), backIntroBtn=document.getElementById("#backIntro");
+const retryBtn = $("#retry");
+const backIntroBtn = $("#backIntro");
 
 // START - go from Intro -> Quiz
 startBtn.addEventListener("click", () => {
@@ -136,6 +137,10 @@ submitBtn.addEventListener("click", () => {
     // show/hide
     quizPage.classList.add("hidden");
     resultsPage.classList.remove("hidden");
+
+    // now scroll (results are visable)
+    resultsPage.scrollIntoView({ behavior: "smooth", block: "start" });
+
     // lock actions until Retry/Back
     submitBtn.disabled = true;
 
