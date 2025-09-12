@@ -43,7 +43,7 @@ const COUNTRIES = [
 const $ = (sel) => document.querySelector(sel) ;
 function shuffle(arr) { const a=arr.slice();  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a; }
 function sample(arr,n){return shuffle(arr).slice(0,n);}
-function buildQuestionsPool(length){
+function buildQuestionPool(length){
     const base = SHUFFLE_QUESTIONS ? shuffle(COUNTRIES) : COUNTRIES.slice();
     const n = (length === 'all') ? COUNTRIES.length : Number(length);
     const pool = base.slice(0, Math.min(n, base.length));
