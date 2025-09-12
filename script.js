@@ -81,6 +81,16 @@ const resultsPage=$("#resultsPage"), scoreEI=$("#score"), reviewEI=$("#review");
 const retryBtn = $("#retry");
 const backIntroBtn = $("#backIntro");
 
+lengthSel.addEventListener("change", () => {
+    if (index === 0) {
+     const len = lengthSel.value;
+     questions = buildQuestionsPool(len);
+     answers = Array(questions.length).fill(null);
+     setNavState();
+     updateUI();
+    }
+});
+
 // START - go from Intro -> Quiz
 startBtn.addEventListener("click", () => {
     const len=lengthSel.value; questions=buildQuestionPool(len);
