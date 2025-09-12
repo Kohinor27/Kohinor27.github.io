@@ -68,6 +68,9 @@ function setNavState() {
     nextBtn.disabled = onLast || !answered;
     submitBtn.disabled = !onLast || !answered;
 
+// lock the question count AFTER leaving the first question
+lengthSel.disabled = !onFirst;
+
 }
 
 // =====UI Wiring =====
@@ -82,7 +85,7 @@ const backIntroBtn = $("#backIntro");
 startBtn.addEventListener("click", () => {
     const len=lengthSel.value; questions=buildQuestionPool(len);
     index=0; answers=Array(questions.length).fill(null);
-    lengthSel.disabled = true;
+    
     // show/hide
     resultsPage.classList.add("hidden"); 
     intro.classList.add("hidden")
@@ -160,7 +163,6 @@ backIntroBtn.addEventListener("click", () => {
     resultsPage.classList.add("hidden"); 
     quizPage.classList.add("hidden");
     intro.classList.remove("hidden");
-    lengthSel.disabled =false;
     startBtn.disabled=false;
     resetBtn.disabled=true; 
     submitBtn.disabled=true;
