@@ -140,17 +140,21 @@ nextBtn.addEventListener("click", () => {
      
 // SUBMIT - go from Quiz -> Results
 submitBtn.addEventListener("click", () => {
+    // 1) score
     let correct=0; answers.forEach((a,i) => { if(a===questions[i].correctIndex) correct++; });
     const pct=Math.round((correct/questions.length)*100);
+
+    // 2) fill score text
     scoreEI.textContent=`You scored ${correct} out of ${questions.length} (${pct}%)`;
 
+    // 3) clear + rebuild the detailed review
     reviewEI.innerHTML="";
     questions.forEach((q,i) => {
         const row=document.createElement("div");
         row.className="row"+(answers[i]===q.correctIndex?"correct":"incorrect");
         const userAnswer=answers[i]!==null ? q.choices[answers[i]] : "No answer";
         row.innerHTML=`<strong>Q${i+1}:</strong> ${q.prompt}<br/>
-        <em>Your answer:</em> ${userAnswer}<br/><em>Correct answer:</em> ${q.answer}`;
+        <em>Your answer:</em> ${userAnswer}<br/><em>Correct answer:</em> ${q.choices[q.correctIndex]}`;
         reviewEI.appendChild(row);
     });
 
@@ -189,6 +193,7 @@ backIntroBtn.addEventListener("click", () => {
 });
 
 function updateUI(){
+    if (questions.length === 0) return;
     const q=questions[index];
     progressEI.textContent=`Question ${index+1} of ${questions.length}`;
     questionEI.textContent=q.prompt; answersForm.innerHTML="";
