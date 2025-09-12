@@ -58,6 +58,18 @@ function buildQuestionPool(length){
 // ===== State =====
 let questions=[], index=0, answrs=[];
 
+// ===== Navigation helper =====
+function setNavState() {
+    const onFirst = index === 0;
+    const onLast = index === questions.length - 1;
+    const answered = answers[index] != null;
+
+    prevBtn.disabled = onFirst;
+    nextBtn.disabled = onLast || !answered;
+    submitBtn.disabled = !onLast || !answered;
+
+}
+
 // =====UI Wiring =====
 const startBtn = $("#startQuiz"), resetBtn=$("#reset"), lengthSel=$("#length");
 const progressEI=$("#progress"), questionEI=$("#question"), answersForm=$("#answers");
@@ -69,6 +81,7 @@ const retryBtn=$("#retry"), backIntroBtn=document.getElementById("#backIntro");
 startBtn.addEventListener("click", () => {
     const len=lengthSel.value; questions=buildQuestionPool(len);
     index=0; answers=Array(questions.length).fill(null);
+    lengthSel.disabled = true;
     // show/hide
     resultsPage.classList.add("hidden"); 
     intro.classList.add("hidden")
@@ -126,6 +139,8 @@ submitBtn.addEventListener("click", () => {
     // lock actions until Retry/Back
     submitBtn.disabled = true;
 
+});
+
 // RETRY - Results -> (fresh round)
 
 retryBtn.addEventListener("click", () => {
@@ -140,6 +155,7 @@ backIntroBtn.addEventListener("click", () => {
     resultsPage.classList.add("hidden"); 
     quizPage.classList.add("hidden");
     intro.classList.remove("hidden");
+    lengthSel.disabled =false;
     startBtn.disabled=false;
     resetBtn.disabled=true; 
     submitBtn.disabled=true;
@@ -157,11 +173,14 @@ function updateUI(){
         label.className="answers"; label.setAttribute("for",id);
         const input = document.createElement("input");
         input.type="radio"; input.name="answer"; input.id=id; input.value=i;
-        input.checked=answers[index]===i; input.addEventListener("change", () => {answers[index]=i; });
+        input.checked=answers[index]===i; input.addEventListener("change", () => {
+            answers[index]=i; 
+            setNavState();
+         });
         const span=document.createElement("span"); span.textContent=choice;
         label.appendChild(input); label.appendChild(span);
         answersForm.appendChild(label);
     });
 
-    prevBtn.disabled=index===0; nextBtn.disabled=index===questions.length-1;
+    setNavState();
 }
