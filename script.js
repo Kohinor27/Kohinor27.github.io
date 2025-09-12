@@ -45,7 +45,8 @@ function shuffle(arr) { const a=arr.slice();  for(let i=a.length-1;i>0;i--){cons
 function sample(arr,n){return shuffle(arr).slice(0,n);}
 function buildQuestionPool(length){
     const base = SHUFFLE_QUESTIONS ? shuffle(COUNTRIES) : COUNTRIES.slice();
-    const pool = (length==='all')? base: base.slice(0,Math.min(length,base.length));
+    const n = (length === 'all') ? COUNTRIES.length : Number(length);
+    const pool = base.slice(0, Math.min(n, base.length));
     return pool.map(item => {
         const other = COUNTRIES.filter(x=>x.capital!==item.capital).map(x=>x.capital);
         const distractors = sample(other, CHOICES_PER_QUESTION - 1);
@@ -56,7 +57,7 @@ function buildQuestionPool(length){
 }
 
 // ===== State =====
-let questions=[], index=0, answrs=[];
+let questions=[], index=0, answers=[];
 
 // ===== Navigation helper =====
 function setNavState() {
@@ -84,7 +85,7 @@ const backIntroBtn = $("#backIntro");
 lengthSel.addEventListener("change", () => {
     if (index === 0) {
      const len = lengthSel.value;
-     questions = buildQuestionsPool(len);
+     questions = buildQuestionPool(len);
      answers = Array(questions.length).fill(null);
      setNavState();
      updateUI();
@@ -95,6 +96,7 @@ lengthSel.addEventListener("change", () => {
 startBtn.addEventListener("click", () => {
     const len=lengthSel.value; questions=buildQuestionPool(len);
     index=0; answers=Array(questions.length).fill(null);
+    updateUI();
     
     // show/hide
     resultsPage.classList.add("hidden"); 
@@ -117,7 +119,7 @@ resetBtn.addEventListener("click", () => {
     prevBtn.disabled = true;
     nextBtn.disabled = true;
     submitBtn.disabled = true;
-    questionsEI.textContent="";
+    questionEI.textContent="";
     answersForm.innerHTML=""; 
     progressEI.textContent="Ready when you are.";
     resultsPage.classList.add("hidden");
