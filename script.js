@@ -140,6 +140,8 @@ nextBtn.addEventListener("click", () => {
      
 // SUBMIT - go from Quiz -> Results
 submitBtn.addEventListener("click", () => {
+    if (!Array.isArray(questions) || questions.length === 0) return;
+
     // 1) score
     let correct=0; answers.forEach((a,i) => { if(a===questions[i].correctIndex) correct++; });
     const pct=Math.round((correct/questions.length)*100);
