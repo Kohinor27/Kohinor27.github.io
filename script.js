@@ -140,6 +140,7 @@ nextBtn.addEventListener("click", () => {
      
 // SUBMIT - go from Quiz -> Results
 submitBtn.addEventListener("click", () => {
+    // Safety: if questions isnt't ready, do nothing
     if (!Array.isArray(questions) || questions.length === 0) return;
 
     // 1) score
@@ -149,7 +150,7 @@ submitBtn.addEventListener("click", () => {
     // 2) fill score text
     scoreEI.textContent=`You scored ${correct} out of ${questions.length} (${pct}%)`;
 
-    // 3) clear + rebuild the detailed review
+    // 3) Build the detailed review (defensively)
     reviewEI.innerHTML="";
     questions.forEach((q,i) => {
         const row=document.createElement("div");
@@ -160,14 +161,14 @@ submitBtn.addEventListener("click", () => {
         reviewEI.appendChild(row);
     });
 
-    // show/hide
+    //  Show results *first* so even if something below fails, you won't see blank page
     quizPage.classList.add("hidden");
     resultsPage.classList.remove("hidden");
 
-    // now scroll (results are visable)
+    // Optional: scroll to results
     resultsPage.scrollIntoView({ behavior: "smooth", block: "start" });
 
-    // lock actions until Retry/Back
+    // Lock submit until Retry/Back
     submitBtn.disabled = true;
 
 });
