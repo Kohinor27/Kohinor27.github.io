@@ -152,6 +152,8 @@ submitBtn.addEventListener("click", () => {
 
     // 3) Build the detailed review (defensively)
     reviewEI.innerHTML="";
+    console.log("DEBUG question[0]:", questions[0]);
+    console.log("DEBUG answers array:", answers);
     questions.forEach((q,i) => {
         const row=document.createElement("div");
         row.className="row"+(answers[i]===q.correctIndex?"correct":"incorrect");
