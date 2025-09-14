@@ -1,82 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Capitals Quiz</title>
-    <link rel="stylesheet" href="style.css?v=18">
-    </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>World Capitals Quiz</title>
+  <link rel="stylesheet" href="style.css?v=19"/>
+</head>
 <body>
-    
 
+  <!-- Intro Page -->
+  <section id="intro" class="card">
+    <div class="logo">🌍</div>
+    <h1>Welcome to the World Capitals Quiz</h1>
+    <p>Test your knowledge of world capitals! You'll be asked to match countries with their correct capital cities.</p>
 
-        <!--Intro Page -->
-    <section id="intro" class="card">
-        <div class=""logo">🌍</div>
-        <h1>Welcome to the World Capitals Quiz</h1>
-        <p>Test your knowledge of world capitals! You'll be asked to match countries with their correct capital cities</p>
+    <h2>Rules</h2>
+    <ul class="rules">
+      <li>Choose the correct capital city for each country.</li>
+      <li>You can move back and forth between questions.</li>
+      <li>Once you press <strong>Submit</strong>, your answers are locked in.</li>
+      <li>Your score will be displayed at the end.</li>
+    </ul>
 
-        <h2>Rules</h2>
-        <ul class="rules">
-            <li>Choose the correct capital city for each country.</li>
-            <li>You can move back and forth between questions.</li>
-            <li>Once you press <strong>Submit</strong>, your answers are locked in.</li>
-            <li>Your score will be displayed at the end.</li>
-        </ul>
+    <button id="startQuiz" class="btn primary" type="button">Start Quiz</button>
+  </section>
 
-        <button id="startQuiz" class="btn primary">Start Quiz</button>
-    </section>
+  <!-- Quiz Page -->
+  <section id="quizPage" class="card hidden" aria-live="polite">
+    <header class="header">
+      <div class="logo">🌍</div>
+      <h1>World Capitals Quiz</h1>
+      <div class="controls-top">
+        <label>
+          Questions:
+          <select id="length">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="all">All</option>
+          </select>
+        </label>
+        <button id="reset" class="btn" type="button" disabled>Reset</button>
+      </div>
+    </header>
 
-        <!--Quiz Page -->
-    <section id="quizPage" class="card hidden">
-        <header class=""header">
-            <div class="logo">🌍</div>
-            <h1>World Capitals Quiz</h1>
-            <div class=""controls-top">
-                <label>
-                    Questions:
-                    <select id="length">
-                    <option value"5">5</option>
-                    <option value"10">10</option> 
-                    <option value"15">15</option>
-                    <option value"all">All</option>
-                    </select>
-                </label>
-                <button id="reset" class="btn" disabled>Reset</button>
-            </div>
-        </header>
+    <main class="card">
+      <div id="progress" class="progress">Ready when you are.</div>
+      <div id="question" class="question"></div>
+      <form id="answers" class="answers" aria-label="answer choices"></form>
+      <div class="nav">
+        <button id="prev" class="btn" type="button" disabled>Prev</button>
+        <button id="next" class="btn" type="button" disabled>Next</button>
+        <button id="submit" class="btn" type="button" disabled>Submit</button>
+      </div>
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+    </main>
+  </section>
 
-        <main class="card">
-            <div id="progress" class="progress">Ready when you are.</div>
-            <div id="question" class="question"></div>
-            <form id="answers" class="answers" aria-label="answer choices"></form>
-            <div class="nav">
-                <button id="prev" class="btn" disabled>Prev</button>
-                <button id="next" class="btn" disabled>Next</button>
-                <button id="submit" type="button" disabled>Submit</button>
-            </div>
-            <div id="feedback" class="feedback" aria-live="polite"></div>
-        </main>
+  <!-- Results Page -->
+  <section id="resultsPage" class="card hidden" aria-live="polite">
+    <div class="logo">🏆</div>
+    <h2>Your Results</h2>
+    <p id="score"></p>
+    <div id="review" class="review"></div>
+    <div class="nav">
+      <button id="retry" class="btn primary" type="button">Try again</button>
+      <button id="backIntro" class="btn" type="button">Back to Intro</button>
+    </div>
+  </section>
 
-    <section id="resultsPage" class="card hidden" aria-live="polite">
-        <div class="logo">🏆</div>
-        <h2>Your Results</h2>
-        <p id="score"></p>
-        <div id="review" class="review"></div>
-        <div class"nav">
-            <button id="retry" class="btn primary">Try again</button>
-            <button id="backIntro" class="btn">Back to Intro</button>
-        </div>
-        </section>
+  <footer class="footer">
+    <small>Copyright © 2025 World Capitals Quiz. All rights reserved.</small>
+  </footer>
 
-        <footer class="footer">
-            <small>Copy right © 2025 World Capitals Quiz. All rights reserved.</small>
-            </footer>
-    </div> 
-</div>
-
-
-
-<script src="script.js?v=18"></script>
+  <script src="script.js?v=19"></script>
 </body>
 </html>
